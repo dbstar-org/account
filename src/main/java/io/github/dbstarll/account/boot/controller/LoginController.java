@@ -3,6 +3,7 @@ package io.github.dbstarll.account.boot.controller;
 import io.github.dbstarll.account.boot.model.request.LoginMiniProgram;
 import io.github.dbstarll.account.boot.model.request.LoginMiniProgramWithPhone;
 import io.github.dbstarll.account.boot.model.request.LoginMobileWithVerifyCode;
+import io.github.dbstarll.account.boot.model.response.AccessTokenResponse;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.HashMap;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/login",
@@ -18,20 +19,20 @@ import java.util.HashMap;
         produces = MediaType.APPLICATION_JSON_VALUE)
 class LoginController {
     @PostMapping("/mp")
-    Object miniProgram(@Valid @RequestBody final LoginMiniProgram loginMiniProgram) {
-        System.out.println(loginMiniProgram);
-        return new HashMap<String, String>();
+    AccessTokenResponse miniProgram(@Valid @RequestBody final LoginMiniProgram request) {
+        System.out.println(request);
+        return new AccessTokenResponse(UUID.randomUUID().toString());
     }
 
     @PostMapping("/mpp")
-    Object miniProgramWithPhone(@Valid @RequestBody final LoginMiniProgramWithPhone loginMiniProgramWithPhone) {
-        System.out.println(loginMiniProgramWithPhone);
-        return new HashMap<String, String>();
+    AccessTokenResponse miniProgramWithPhone(@Valid @RequestBody final LoginMiniProgramWithPhone request) {
+        System.out.println(request);
+        return new AccessTokenResponse(UUID.randomUUID().toString());
     }
 
     @PostMapping("/mobile")
-    Object mobileWithVerifyCode(@Valid @RequestBody final LoginMobileWithVerifyCode loginMobileWithVerifyCode) {
-        System.out.println(loginMobileWithVerifyCode);
-        return new HashMap<String, String>();
+    AccessTokenResponse mobileWithVerifyCode(@Valid @RequestBody final LoginMobileWithVerifyCode request) {
+        System.out.println(request);
+        return new AccessTokenResponse(UUID.randomUUID().toString());
     }
 }
