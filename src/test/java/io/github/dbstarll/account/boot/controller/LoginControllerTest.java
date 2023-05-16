@@ -26,5 +26,17 @@ class LoginControllerTest {
         assertEquals(200, res.getStatusCodeValue());
         assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
         assertNotNull(res.getBody());
+        System.out.println(res.getBody());
+    }
+
+    @Test
+    void miniProgramAppIdNotSet() {
+        final LoginMiniProgram params = new LoginMiniProgram();
+        params.setCode("code");
+        final ResponseEntity<Object> res = restTemplate.postForEntity("/login/mp", params, Object.class);
+        assertEquals(400, res.getStatusCodeValue());
+        assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
+        assertNotNull(res.getBody());
+        System.out.println(res.getBody());
     }
 }
