@@ -1,8 +1,10 @@
 package io.github.dbstarll.account.boot.model.request;
 
+import javax.validation.constraints.NotBlank;
 import java.util.StringJoiner;
 
-public final class LoginMobileWithVerifyCode extends MobileBase {
+public final class LoginMobileVerifyCode extends MobileBase {
+    @NotBlank
     private String verifyCode;
 
     /**

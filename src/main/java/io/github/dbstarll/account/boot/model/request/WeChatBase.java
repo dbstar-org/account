@@ -1,11 +1,13 @@
 package io.github.dbstarll.account.boot.model.request;
 
+import javax.validation.constraints.NotBlank;
 import java.util.StringJoiner;
 
 /**
  * 基于微信体系的请求参数基础.
  */
 public abstract class WeChatBase extends RequestBase {
+    @NotBlank
     private String appId;
 
     /**
@@ -26,13 +28,8 @@ public abstract class WeChatBase extends RequestBase {
         this.appId = appId;
     }
 
-    /**
-     * 为toString添加成员属性信息.
-     *
-     * @param joiner StringJoiner from super
-     * @return StringJoiner
-     */
+    @Override
     protected StringJoiner addToStringEntry(final StringJoiner joiner) {
-        return joiner.add("appId='" + getAppId() + "'");
+        return super.addToStringEntry(joiner).add("appId='" + getAppId() + "'");
     }
 }

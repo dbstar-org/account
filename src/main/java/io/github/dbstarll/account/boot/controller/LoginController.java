@@ -1,15 +1,18 @@
 package io.github.dbstarll.account.boot.controller;
 
 import io.github.dbstarll.account.boot.model.request.LoginMiniProgram;
-import io.github.dbstarll.account.boot.model.request.LoginMiniProgramWithPhone;
-import io.github.dbstarll.account.boot.model.request.LoginMobileWithVerifyCode;
+import io.github.dbstarll.account.boot.model.request.LoginMiniProgramPhone;
+import io.github.dbstarll.account.boot.model.request.LoginMobileVerifyCode;
+import io.github.dbstarll.account.boot.model.response.AccessTokenResponse;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.HashMap;
+import javax.validation.Valid;
+import java.util.UUID;
 
 @RestController
 @RequestMapping(path = "/login",
@@ -17,20 +20,20 @@ import java.util.HashMap;
         produces = MediaType.APPLICATION_JSON_VALUE)
 class LoginController {
     @PostMapping("/mp")
-    Object miniProgram(@RequestBody final LoginMiniProgram loginMiniProgram) {
-        System.out.println(loginMiniProgram);
-        return new HashMap<String, String>();
+    ResponseEntity<AccessTokenResponse> miniProgram(@Valid @RequestBody final LoginMiniProgram request) {
+        System.out.println(request);
+        return ResponseEntity.ok(new AccessTokenResponse(UUID.randomUUID().toString()));
     }
 
     @PostMapping("/mpp")
-    Object miniProgramWithPhone(@RequestBody final LoginMiniProgramWithPhone loginMiniProgramWithPhone) {
-        System.out.println(loginMiniProgramWithPhone);
-        return new HashMap<String, String>();
+    ResponseEntity<AccessTokenResponse> miniProgramPhone(@Valid @RequestBody final LoginMiniProgramPhone request) {
+        System.out.println(request);
+        return ResponseEntity.ok(new AccessTokenResponse(UUID.randomUUID().toString()));
     }
 
     @PostMapping("/mobile")
-    Object mobileWithVerifyCode(@RequestBody final LoginMobileWithVerifyCode loginMobileWithVerifyCode) {
-        System.out.println(loginMobileWithVerifyCode);
-        return new HashMap<String, String>();
+    ResponseEntity<AccessTokenResponse> mobileVerifyCode(@Valid @RequestBody final LoginMobileVerifyCode request) {
+        System.out.println(request);
+        return ResponseEntity.ok(new AccessTokenResponse(UUID.randomUUID().toString()));
     }
 }

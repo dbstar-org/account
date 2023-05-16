@@ -1,8 +1,10 @@
 package io.github.dbstarll.account.boot.model.request;
 
+import javax.validation.constraints.NotBlank;
 import java.util.StringJoiner;
 
 public class LoginMiniProgram extends WeChatBase {
+    @NotBlank
     private String code;
 
     /**
