@@ -1,7 +1,6 @@
 package io.github.dbstarll.account.boot.controller;
 
 import io.github.dbstarll.account.boot.model.request.LoginMiniProgram;
-import io.github.dbstarll.account.boot.model.request.LoginMiniProgramPhone;
 import io.github.dbstarll.account.boot.model.request.LoginMobileVerifyCode;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-class LoginControllerTest {
+class BindControllerTest {
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -24,31 +23,7 @@ class LoginControllerTest {
         final LoginMiniProgram params = new LoginMiniProgram();
         params.setAppId("appId");
         params.setCode("code");
-        final ResponseEntity<Object> res = restTemplate.postForEntity("/login/mp", params, Object.class);
-        assertEquals(200, res.getStatusCodeValue());
-        assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
-        assertNotNull(res.getBody());
-        System.out.println(res.getBody());
-    }
-
-    @Test
-    void miniProgramAppIdNotSet() {
-        final LoginMiniProgram params = new LoginMiniProgram();
-        params.setCode("code");
-        final ResponseEntity<Object> res = restTemplate.postForEntity("/login/mp", params, Object.class);
-        assertEquals(400, res.getStatusCodeValue());
-        assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
-        assertNotNull(res.getBody());
-        System.out.println(res.getBody());
-    }
-
-    @Test
-    void miniProgramPhone() {
-        final LoginMiniProgramPhone params = new LoginMiniProgramPhone();
-        params.setAppId("appId");
-        params.setCode("code");
-        params.setPhoneCode("phoneCode");
-        final ResponseEntity<Object> res = restTemplate.postForEntity("/login/mpp", params, Object.class);
+        final ResponseEntity<Object> res = restTemplate.postForEntity("/bind/mp", params, Object.class);
         assertEquals(200, res.getStatusCodeValue());
         assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
         assertNotNull(res.getBody());
@@ -60,7 +35,7 @@ class LoginControllerTest {
         final LoginMobileVerifyCode params = new LoginMobileVerifyCode();
         params.setMobile("mobile");
         params.setVerifyCode("verifyCode");
-        final ResponseEntity<Object> res = restTemplate.postForEntity("/login/mobile", params, Object.class);
+        final ResponseEntity<Object> res = restTemplate.postForEntity("/bind/mobile", params, Object.class);
         assertEquals(200, res.getStatusCodeValue());
         assertEquals(MediaType.APPLICATION_JSON, res.getHeaders().getContentType());
         assertNotNull(res.getBody());

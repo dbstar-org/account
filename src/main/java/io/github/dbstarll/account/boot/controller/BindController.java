@@ -1,7 +1,6 @@
 package io.github.dbstarll.account.boot.controller;
 
 import io.github.dbstarll.account.boot.model.request.LoginMiniProgram;
-import io.github.dbstarll.account.boot.model.request.LoginMiniProgramPhone;
 import io.github.dbstarll.account.boot.model.request.LoginMobileVerifyCode;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,12 +18,6 @@ import java.util.HashMap;
 class BindController {
     @PostMapping("/mp")
     Object miniProgram(@Valid @RequestBody final LoginMiniProgram request) {
-        System.out.println(request);
-        return new HashMap<String, String>();
-    }
-
-    @PostMapping("/mpp")
-    Object miniProgramPhone(@Valid @RequestBody final LoginMiniProgramPhone request) {
         System.out.println(request);
         return new HashMap<String, String>();
     }
