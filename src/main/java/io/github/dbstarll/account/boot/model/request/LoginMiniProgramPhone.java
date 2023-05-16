@@ -3,7 +3,7 @@ package io.github.dbstarll.account.boot.model.request;
 import javax.validation.constraints.NotBlank;
 import java.util.StringJoiner;
 
-public final class LoginMiniProgramWithPhone extends LoginMiniProgram {
+public final class LoginMiniProgramPhone extends LoginMiniProgram {
     @NotBlank
     private String phoneCode;
 
