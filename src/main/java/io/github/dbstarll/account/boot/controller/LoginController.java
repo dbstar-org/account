@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 
 @RestController
@@ -17,19 +18,19 @@ import java.util.HashMap;
         produces = MediaType.APPLICATION_JSON_VALUE)
 class LoginController {
     @PostMapping("/mp")
-    Object miniProgram(@RequestBody final LoginMiniProgram loginMiniProgram) {
+    Object miniProgram(@Valid @RequestBody final LoginMiniProgram loginMiniProgram) {
         System.out.println(loginMiniProgram);
         return new HashMap<String, String>();
     }
 
     @PostMapping("/mpp")
-    Object miniProgramWithPhone(@RequestBody final LoginMiniProgramWithPhone loginMiniProgramWithPhone) {
+    Object miniProgramWithPhone(@Valid @RequestBody final LoginMiniProgramWithPhone loginMiniProgramWithPhone) {
         System.out.println(loginMiniProgramWithPhone);
         return new HashMap<String, String>();
     }
 
     @PostMapping("/mobile")
-    Object mobileWithVerifyCode(@RequestBody final LoginMobileWithVerifyCode loginMobileWithVerifyCode) {
+    Object mobileWithVerifyCode(@Valid @RequestBody final LoginMobileWithVerifyCode loginMobileWithVerifyCode) {
         System.out.println(loginMobileWithVerifyCode);
         return new HashMap<String, String>();
     }
